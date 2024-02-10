@@ -1,0 +1,14 @@
+
+.hg/
+binaries/
+deriveddatacache/
+.vs/
+build/
+builds/
+intermediate/
+PACKPLUGIN/
+COMPPLUGIN/
+saved/
+*.orig
+*.sln
+*.xlsx
