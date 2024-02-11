@@ -1,5 +1,10 @@
 import random
 
+#############
+# Structure
+# UI > Board > Territory
+# UI > Board > Player
+
 # helper functions
 def printTerritories():
     print('')
@@ -8,6 +13,7 @@ def printTerritories():
         t.printData()
         print('')
 
+# Represents a tile on the board
 class Territory:
     id = 0
     name = "empty"
@@ -64,7 +70,7 @@ territories[1].reinforce(10)
 
 printTerritories()
 
-# Attack
+# Attack: player.makeAttack()??
 print('')
 print('// Attack')
 territories[0].reinforce(-5) # TODO REMEMBER THAT LIST INDEX != TERRITORY ID
