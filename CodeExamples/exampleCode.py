@@ -1,9 +1,18 @@
 import random
 
-#############
-# Structure
-# UI > Board > Territory
-# UI > Board > Player
+###########################
+#
+# Class hierachy: 
+#   GameBoard > Territory > Army
+# 
+# Class Structure:
+#   GameBoard: territories[]
+#   GameBoard: players[]
+#     Territory: id
+#     Territory: name
+#     Territory: owner
+#     Territory: army
+#       Army: count
 
 # helper functions
 def printTerritories():
@@ -48,7 +57,7 @@ class Territory:
         print('owner: ' + str(self.owner))
         print('army count: ' + str(self.army))
 
-# Init Game
+# Init Game <-- GameBoard/StartGame
 print('')
 print('// Init game')
 territories = []
@@ -59,7 +68,7 @@ territories.append(Territory('Germany', 4))
 
 printTerritories()
 
-# Give starting territories 
+# Give starting territories <-- GameBoard/InitGame
 print('')
 print('// Give starting territories')
 territories[0].takeTerritory(1)
@@ -70,7 +79,7 @@ territories[1].reinforce(10)
 
 printTerritories()
 
-# Attack: player.makeAttack()??
+# Attack with army <-- GameBoard/PlayerAttack
 print('')
 print('// Attack')
 territories[0].reinforce(-5) # TODO REMEMBER THAT LIST INDEX != TERRITORY ID
