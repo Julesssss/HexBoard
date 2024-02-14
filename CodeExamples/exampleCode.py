@@ -1,9 +1,6 @@
 import random
 
 ###########################
-#
-# Class hierachy: 
-#   GameBoard > Territory > Army
 # 
 # Class Structure:
 #   GameBoard: territories[]
@@ -14,7 +11,9 @@ import random
 #     Territory: army
 #       Army: count
 #   BattleUtils
+#   BattleOutcome
 # 
+###########################
 
 # Helper functions
 def printTerritories():
@@ -95,7 +94,9 @@ class BattleUtils:
         if defendTerritory.army == 0:
             return BattleOutcome(True, attackAmount, defendAmount)
         else:
+            # TODO: Replace real battle outcome logic
             attackWasSuccessful = 5 > random.randrange(1,10)
+
             if (attackWasSuccessful):
                 return BattleOutcome(True, attackAmount, defendAmount)
             else:
@@ -111,7 +112,7 @@ class BattleOutcome:
     def __init__(self, didAttackerWin, attRemainder, defRemainder):
         self.didAttackerWin = didAttackerWin
         self.attRemainder = attRemainder
-        self.defRemainder = defRemainder    
+        self.defRemainder = defRemainder
 
 
 # Init Game
