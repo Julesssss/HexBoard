@@ -40,16 +40,19 @@ class GameBoard:
 
     def takeStartingTerritory(self, territory, newOwner):
         territory.takeTerritory(newOwner)
-        territory.reinforce(10)
+        territory.setArmyCount(10)
 
     def attack(self, attackTerritory, defendTerritory, attackAmount):
-        if defendTerritory.army == 0:
-            attackTerritory.reinforce(-5)
+        print('player ' + str(attackTerritory.owner) + ' attacking ' + defendTerritory.name)
+        attackTerritory.reinforce(-attackAmount)
+        battleOutcome = BattleUtils.getBattleOutcome(attackTerritory, defendTerritory, attackAmount, defendTerritory.army)
+        print('attackWasSuccessful: ' + str(battleOutcome.didAttackerWin))
+
+        if battleOutcome.didAttackerWin:
             defendTerritory.takeTerritory(attackTerritory.owner)
-            defendTerritory.reinforce(attackAmount)
+            defendTerritory.setArmyCount(battleOutcome.attRemainder)
         else:
-            # TODO calculate fight results
-            print('TODO')
+            defendTerritory.setArmyCount(battleOutcome.defRemainder)
 
 
 # Represents a tile on the board
@@ -67,14 +70,48 @@ class Territory:
         self.owner = newOwner
         print(str(self.name) + ' taken by player ' + str(self.owner))
 
+    def setArmyCount(self, armyCount):
+        self.army = armyCount
+        print(str(self.name) + ' army count set to ' + str(armyCount))
+
     def reinforce(self, armyCount):
         self.army += armyCount
-        print(str(self.name) + ' reinforced by ' + str(self.army))
+        if (armyCount >= 0):
+            print(str(self.name) + ' reinforced by ' + str(armyCount))
+        else:
+            print(str(self.name) + ' reduced by ' + str(armyCount))
 
     def printData(self):
         print('Territory: ' + str(self.name) + ', ID: ' + str(self.id))
         print('owner: ' + str(self.owner))
         print('army count: ' + str(self.army))
+
+
+# Calculate battle outcome
+class BattleUtils:
+
+    @staticmethod
+    def getBattleOutcome(attackTerritory, defendTerritory, attackAmount, defendAmount):
+        if defendTerritory.army == 0:
+            return BattleOutcome(True, attackAmount, defendAmount)
+        else:
+            attackWasSuccessful = 5 > random.randrange(1,10)
+            if (attackWasSuccessful):
+                return BattleOutcome(True, attackAmount, defendAmount)
+            else:
+                return BattleOutcome(False, defendAmount, defendAmount)
+
+
+# Data structure for returning results
+class BattleOutcome:
+    didAttackerWin = False
+    attRemainder = 0
+    defRemainder = 0
+
+    def __init__(self, didAttackerWin, attRemainder, defRemainder):
+        self.didAttackerWin = didAttackerWin
+        self.attRemainder = attRemainder
+        self.defRemainder = defRemainder    
 
 
 # Init Game
@@ -89,6 +126,10 @@ print('// Attack')
 attackTerritory = gameBoard.territories[0]
 defendTerritory = gameBoard.territories[3]
 gameBoard.attack(attackTerritory, defendTerritory, 5)
-
 printTerritories()
 
+print('// Attack')
+attackTerritory = gameBoard.territories[1]
+defendTerritory = gameBoard.territories[3]
+gameBoard.attack(attackTerritory, defendTerritory, 8)
+printTerritories()
