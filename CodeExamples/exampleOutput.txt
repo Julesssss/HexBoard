@@ -1,27 +1,6 @@
 // Init game
-
-// Game State
-Territory: England, ID: 1
-owner: 0
-army count: 0
-
-Territory: Portugal, ID: 2
-owner: 0
-army count: 0
-
-Territory: France, ID: 3
-owner: 0
-army count: 0
-
-Territory: Germany, ID: 4
-owner: 0
-army count: 0
-
-
-// Give starting territories
 England taken by player 1
 England reinforced by 10
-
 Portugal taken by player 2
 Portugal reinforced by 10
 
@@ -45,7 +24,6 @@ army count: 0
 
 // Attack
 England reinforced by 5
-Germany attacked by player 1
 Germany taken by player 1
 Germany reinforced by 5
 

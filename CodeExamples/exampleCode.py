@@ -13,14 +13,44 @@ import random
 #     Territory: owner
 #     Territory: army
 #       Army: count
+#   BattleUtils
+# 
 
-# helper functions
+# Helper functions
 def printTerritories():
     print('')
     print('// Game State')
-    for t in territories:
+    for t in gameBoard.territories:
         t.printData()
         print('')
+
+# Game Board
+class GameBoard:
+    territories = []
+    players = []
+
+    def __init__(self):
+        self.territories.append(Territory('England', 1))
+        self.territories.append(Territory('Portugal', 2))
+        self.territories.append(Territory('France', 3))
+        self.territories.append(Territory('Germany', 4))
+
+        self.takeStartingTerritory(self.territories[0], 1)
+        self.takeStartingTerritory(self.territories[1], 2)
+
+    def takeStartingTerritory(self, territory, newOwner):
+        territory.takeTerritory(newOwner)
+        territory.reinforce(10)
+
+    def attack(self, attackTerritory, defendTerritory, attackAmount):
+        if defendTerritory.army == 0:
+            attackTerritory.reinforce(-5)
+            defendTerritory.takeTerritory(attackTerritory.owner)
+            defendTerritory.reinforce(attackAmount)
+        else:
+            # TODO calculate fight results
+            print('TODO')
+
 
 # Represents a tile on the board
 class Territory:
@@ -41,48 +71,24 @@ class Territory:
         self.army += armyCount
         print(str(self.name) + ' reinforced by ' + str(self.army))
 
-    def attack(self, attackingPlayer, attackArmyCount):
-        print(str(self.name) + ' attacked by player ' + str(attackingPlayer))
-        
-        if self.army == 0:
-            self.takeTerritory(attackingPlayer)
-            self.reinforce(attackArmyCount)
-        else:
-            # TODO calculate fight results
-            print('TODO')
-        
-
     def printData(self):
         print('Territory: ' + str(self.name) + ', ID: ' + str(self.id))
         print('owner: ' + str(self.owner))
         print('army count: ' + str(self.army))
 
-# Init Game <-- GameBoard/StartGame
+
+# Init Game
 print('')
 print('// Init game')
-territories = []
-territories.append(Territory('England', 1))
-territories.append(Territory('Portugal', 2))
-territories.append(Territory('France', 3))
-territories.append(Territory('Germany', 4))
-
+gameBoard = GameBoard()
 printTerritories()
 
-# Give starting territories <-- GameBoard/InitGame
-print('')
-print('// Give starting territories')
-territories[0].takeTerritory(1)
-territories[0].reinforce(10)
-print('')
-territories[1].takeTerritory(2)
-territories[1].reinforce(10)
-
-printTerritories()
-
-# Attack with army <-- GameBoard/PlayerAttack
+# Attack with army
 print('')
 print('// Attack')
-territories[0].reinforce(-5) # TODO REMEMBER THAT LIST INDEX != TERRITORY ID
-territories[3].attack(1, 5)
+attackTerritory = gameBoard.territories[0]
+defendTerritory = gameBoard.territories[3]
+gameBoard.attack(attackTerritory, defendTerritory, 5)
 
 printTerritories()
+
