@@ -68,4 +68,4 @@ army count: 0
 
 Territory: Germany, ID: 4
 owner: 2
-army count:
+army count: 8
