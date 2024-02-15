@@ -1,29 +1,8 @@
 // Init game
-
-// Game State
-Territory: England, ID: 1
-owner: 0
-army count: 0
-
-Territory: Portugal, ID: 2
-owner: 0
-army count: 0
-
-Territory: France, ID: 3
-owner: 0
-army count: 0
-
-Territory: Germany, ID: 4
-owner: 0
-army count: 0
-
-
-// Give starting territories
 England taken by player 1
-England reinforced by 10
-
+England army count set to 10
 Portugal taken by player 2
-Portugal reinforced by 10
+Portugal army count set to 10
 
 // Game State
 Territory: England, ID: 1
@@ -44,10 +23,11 @@ army count: 0
 
 
 // Attack
-England reinforced by 5
-Germany attacked by player 1
+player 1 attacking Germany
+England reduced by -5
+attackWasSuccessful: True
 Germany taken by player 1
-Germany reinforced by 5
+Germany army count set to 5
 
 // Game State
 Territory: England, ID: 1
@@ -65,3 +45,27 @@ army count: 0
 Territory: Germany, ID: 4
 owner: 1
 army count: 5
+
+// Attack
+player 2 attacking Germany
+Portugal reduced by -8
+attackWasSuccessful: True
+Germany taken by player 2
+Germany army count set to 8
+
+// Game State
+Territory: England, ID: 1
+owner: 1
+army count: 5
+
+Territory: Portugal, ID: 2
+owner: 2
+army count: 2
+
+Territory: France, ID: 3
+owner: 0
+army count: 0
+
+Territory: Germany, ID: 4
+owner: 2
+army count: 8
