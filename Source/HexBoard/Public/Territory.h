@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include <string>
 
 /**
  * 
@@ -14,7 +15,8 @@ public:
 	~Territory();
 
 	// Constructor with params
-	Territory(int i);
+	Territory(int id, FString name);
 
 	int32 id;
+	FString name;
 };

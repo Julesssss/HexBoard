@@ -13,9 +13,9 @@ void GameBoard::Init()
 	IntArray.Init(0, 10);
 
 	// Init Territories
-	Territories.Add(new Territory(1));
-	Territories.Add(new Territory(2));
-	Territories.Add(new Territory(3));
+	Territories.Add(new Territory(1, "England"));
+	Territories.Add(new Territory(2, "Portugal"));
+	Territories.Add(new Territory(3, "France"));
 
 	PrintBoardData();
 }
@@ -28,6 +28,8 @@ void GameBoard::PrintBoardData()
 	for (auto& Territory : Territories)
 	{
 		TerritoryData += FString::FromInt(Territory->id);
+		TerritoryData += TEXT(" ");
+		TerritoryData += Territory->name;
 		TerritoryData += TEXT(", ");
 	}
 	UE_LOG(LogTemp, Warning, TEXT("Territories: %s"), *FString(TerritoryData));

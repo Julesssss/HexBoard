@@ -6,13 +6,15 @@
 Territory::Territory()
 {
 	id = 1;
+	name = "";
 }
 
 Territory::~Territory()
 {
 }
 
-Territory::Territory(int i)
+Territory::Territory(int _id, FString _name): id(_id), name(_name)
 {
-	id = i;
+	id = _id;
+	name = _name;
 }
