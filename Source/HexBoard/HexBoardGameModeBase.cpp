@@ -6,9 +6,6 @@
 
 void AHexBoardGameModeBase::BeginPlay()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Hello World from AHexBoardGameModeBase"));
-
-	// Case 1: Single pointer
 	GameBoard* gameBoard = new GameBoard;
 	if (gameBoard == NULL)
 	{
@@ -16,5 +13,6 @@ void AHexBoardGameModeBase::BeginPlay()
 	}
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Created gameboard"));
+		gameBoard->Init();
 	}
 }

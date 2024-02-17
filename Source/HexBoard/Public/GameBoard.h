@@ -11,4 +11,12 @@ class HEXBOARD_API GameBoard
 {
 public:
 	GameBoard();
+
+    virtual void Init();
+
+private:
+
+    TArray<int32> IntArray;
+
+    virtual void PrintBoardData();
 };
