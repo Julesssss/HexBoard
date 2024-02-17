@@ -11,16 +11,25 @@ GameBoard::GameBoard()
 void GameBoard::Init()
 {
 	IntArray.Init(0, 10);
+
+	// Init Territories
+	Territory* t1 = new Territory;
+	Territories.Add(t1);
+	Territories.Add(new Territory);
+	Territories.Add(new Territory);
+
 	PrintBoardData();
 }
 
 void GameBoard::PrintBoardData()
 {
-	FString BoardData;
-	for (auto& Int : IntArray)
+	UE_LOG(LogTemp, Warning, TEXT("Number of territories: %i"), Territories.Num());
+
+	FString TerritoryData;
+	for (auto& Territory : Territories)
 	{
-		BoardData += FString::FromInt(Int);
-		BoardData += TEXT(", ");
+		TerritoryData += FString::FromInt(Territory->id);
+		TerritoryData += TEXT(", ");
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Distance: %s"), *FString(BoardData));
+	UE_LOG(LogTemp, Warning, TEXT("Territories: %s"), *FString(TerritoryData));
 }
