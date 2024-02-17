@@ -13,5 +13,8 @@ public:
 	Territory();
 	~Territory();
 
+	// Constructor with params
+	Territory(int i);
+
 	int32 id;
 };

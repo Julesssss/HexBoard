@@ -13,10 +13,9 @@ void GameBoard::Init()
 	IntArray.Init(0, 10);
 
 	// Init Territories
-	Territory* t1 = new Territory;
-	Territories.Add(t1);
-	Territories.Add(new Territory);
-	Territories.Add(new Territory);
+	Territories.Add(new Territory(1));
+	Territories.Add(new Territory(2));
+	Territories.Add(new Territory(3));
 
 	PrintBoardData();
 }

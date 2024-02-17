@@ -11,3 +11,8 @@ Territory::Territory()
 Territory::~Territory()
 {
 }
+
+Territory::Territory(int i)
+{
+	id = i;
+}
