@@ -2,11 +2,10 @@
 
 
 #include "HexBoardGameModeBase.h"
-#include <GameBoard.h>
 
 void AHexBoardGameModeBase::BeginPlay()
 {
-	GameBoard* gameBoard = new GameBoard;
+	gameBoard = new GameBoard;
 	if (gameBoard == NULL)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Failed to create gameboard"));

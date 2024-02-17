@@ -22,7 +22,5 @@ private:
 
     TArray<int32> IntArray;
 
-
-
     virtual void PrintBoardData();
 };

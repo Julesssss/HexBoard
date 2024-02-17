@@ -15,8 +15,14 @@ public:
 	~Territory();
 
 	// Constructor with params
-	Territory(int id, FString name);
+	Territory(int, FString);
 
 	int32 id;
 	FString name;
+	int32 ownerID;
+	int32 units;
+
+	virtual void setArmyCount(int);
+
+	virtual void takeTerritory(int);
 };
