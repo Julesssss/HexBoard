@@ -22,5 +22,7 @@ private:
 
     TArray<int32> IntArray;
 
+    virtual void TakeStartingTerritory(Territory* territory, int OwnerID);
+
     virtual void PrintBoardData();
 };

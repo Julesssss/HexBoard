@@ -16,13 +16,18 @@ void GameBoard::Init()
 	Territories.Add(new Territory(1, "England"));
 	Territories.Add(new Territory(2, "Portugal"));
 	Territories.Add(new Territory(3, "France"));
+	Territories.Add(new Territory(4, "Spain"));
 
-	Territories[0]->takeTerritory(0);
-	Territories[0]->setArmyCount(10);
-	Territories[1]->takeTerritory(1);
-	Territories[1]->setArmyCount(10);
+	TakeStartingTerritory(Territories[0], 1);
+	TakeStartingTerritory(Territories[1], 2);
 
 	PrintBoardData();
+}
+
+void GameBoard::TakeStartingTerritory(Territory* territory, int ownerID)
+{
+	territory->takeTerritory(ownerID);
+	territory->setArmyCount(10);
 }
 
 void GameBoard::PrintBoardData()
@@ -33,13 +38,13 @@ void GameBoard::PrintBoardData()
 	{
 		FString TerritoryData;
 		TerritoryData += TEXT("ID: ");
-		TerritoryData += FString::FromInt(Territory->id);
+		TerritoryData += FString::FromInt(Territory->_ID);
 		TerritoryData += TEXT(", ");
-		TerritoryData += Territory->name;
+		TerritoryData += Territory->_Name;
 		TerritoryData += TEXT(", owner:");
-		TerritoryData += FString::FromInt(Territory->ownerID);
+		TerritoryData += FString::FromInt(Territory->_OwnerID);
 		TerritoryData += TEXT(", units: ");
-		TerritoryData += FString::FromInt(Territory->units);
+		TerritoryData += FString::FromInt(Territory->_Units);
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *FString(TerritoryData));
 	}
 

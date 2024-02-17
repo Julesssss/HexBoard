@@ -17,10 +17,10 @@ public:
 	// Constructor with params
 	Territory(int, FString);
 
-	int32 id;
-	FString name;
-	int32 ownerID;
-	int32 units;
+	int32 _ID;
+	FString _Name;
+	int32 _OwnerID;
+	int32 _Units;
 
 	virtual void setArmyCount(int);
 

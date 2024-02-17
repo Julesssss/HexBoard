@@ -12,18 +12,18 @@ Territory::~Territory()
 {
 }
 
-Territory::Territory(int _id, FString _name): id(_id), name(_name)
+Territory::Territory(int id, FString name): _ID(id), _Name(name)
 {
-	units = 0;
-	ownerID = -1;
+	_Units = 0;
+	_OwnerID = -1;
 }
 
 void Territory::setArmyCount(int unitCount)
 {
-	units = unitCount;
+	_Units = unitCount;
 }
 
-void Territory::takeTerritory(int _ownerID)
+void Territory::takeTerritory(int ownerID)
 {
-	ownerID = _ownerID;
+	_OwnerID = ownerID;
 }
