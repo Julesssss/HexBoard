@@ -11,10 +11,14 @@ void AHexBoardGameModeBase::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("Failed to create gameboard"));
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("Created gameboard"));
-		gameBoard->Init();
-		MakeExampleMoves();
+		CreateGameBoard();
 	}
+}
+
+void AHexBoardGameModeBase::CreateGameBoard() {
+	UE_LOG(LogTemp, Warning, TEXT("Initialised gameboard"));
+	gameBoard->Init();
+	MakeExampleMoves();
 }
 
 void AHexBoardGameModeBase::MakeExampleMoves() {
