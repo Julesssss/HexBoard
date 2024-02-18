@@ -21,13 +21,27 @@ void GameBoard::Init()
 	TakeStartingTerritory(Territories[0], 1);
 	TakeStartingTerritory(Territories[1], 2);
 
+	Attack(Territories[0], Territories[3], 5);
+
 	PrintBoardData();
 }
 
 void GameBoard::TakeStartingTerritory(Territory* territory, int ownerID)
 {
 	territory->takeTerritory(ownerID);
-	territory->setArmyCount(10);
+	territory->setArmyCount(StartingUnitCount);
+}
+
+void GameBoard::Attack(Territory* attackingTerritory, Territory* defendingTerritory, int attackUnitCount)
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s attacking %s"), *attackingTerritory->_Name, *defendingTerritory->_Name);
+	attackingTerritory->Reinforce(-attackUnitCount);
+
+	// TODO: Calculate battle outcome
+	if (true) { // TODO: Attacker always wins for now
+		defendingTerritory->takeTerritory(attackingTerritory->_OwnerID);
+		defendingTerritory->setArmyCount(attackUnitCount);
+	}
 }
 
 void GameBoard::PrintBoardData()

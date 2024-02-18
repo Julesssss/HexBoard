@@ -24,5 +24,7 @@ public:
 
 	virtual void setArmyCount(int);
 
+	virtual void Reinforce(int);
+
 	virtual void takeTerritory(int);
 };

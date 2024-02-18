@@ -20,9 +20,13 @@ public:
 
 private:
 
+    const int StartingUnitCount = 10;
+
     TArray<int32> IntArray;
 
     virtual void TakeStartingTerritory(Territory* territory, int OwnerID);
+
+    virtual void Attack(Territory* attackingTerritory, Territory* defendingTerritory, int attackUnitCount);
 
     virtual void PrintBoardData();
 };
