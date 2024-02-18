@@ -3,7 +3,7 @@
 
 #include "HexBoardGameModeBase.h"
 
-void AHexBoardGameModeBase::BeginPlay()
+AHexBoardGameModeBase::AHexBoardGameModeBase()
 {
 	gameBoard = new GameBoard;
 	if (gameBoard == NULL)
@@ -15,10 +15,15 @@ void AHexBoardGameModeBase::BeginPlay()
 	}
 }
 
+
+void AHexBoardGameModeBase::BeginPlay()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AHexBoardGameModeBase BeginPlay"));
+}
+
 void AHexBoardGameModeBase::CreateGameBoard() {
 	UE_LOG(LogTemp, Warning, TEXT("Initialised gameboard"));
 	gameBoard->Init();
-	MakeExampleMoves();
 }
 
 void AHexBoardGameModeBase::MakeExampleMoves() {

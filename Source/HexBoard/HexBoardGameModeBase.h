@@ -11,10 +11,12 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class HEXBOARD_API AHexBoardGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+	AHexBoardGameModeBase();
 
 	virtual void BeginPlay() override;
 
@@ -24,5 +26,6 @@ public:
 
 	void CreateGameBoard();
 
+	UFUNCTION(BlueprintCallable)
 	void MakeExampleMoves();
 };
