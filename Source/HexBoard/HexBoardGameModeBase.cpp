@@ -13,5 +13,15 @@ void AHexBoardGameModeBase::BeginPlay()
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Created gameboard"));
 		gameBoard->Init();
+		MakeExampleMoves();
 	}
+}
+
+void AHexBoardGameModeBase::MakeExampleMoves() {
+	gameBoard->TakeStartingTerritory(gameBoard->Territories[0], 1);
+	gameBoard->TakeStartingTerritory(gameBoard->Territories[1], 2);
+
+	gameBoard->Attack(gameBoard->Territories[0], gameBoard->Territories[3], 5);
+
+	gameBoard->PrintBoardData();
 }

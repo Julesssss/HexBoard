@@ -17,13 +17,6 @@ void GameBoard::Init()
 	Territories.Add(new Territory(2, "Portugal"));
 	Territories.Add(new Territory(3, "France"));
 	Territories.Add(new Territory(4, "Spain"));
-
-	TakeStartingTerritory(Territories[0], 1);
-	TakeStartingTerritory(Territories[1], 2);
-
-	Attack(Territories[0], Territories[3], 5);
-
-	PrintBoardData();
 }
 
 void GameBoard::TakeStartingTerritory(Territory* territory, int ownerID)

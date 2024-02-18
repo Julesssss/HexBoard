@@ -18,8 +18,6 @@ public:
 
     TArray<Territory*> Territories;
 
-private:
-
     const int StartingUnitCount = 10;
 
     TArray<int32> IntArray;

@@ -18,6 +18,8 @@ class HEXBOARD_API AHexBoardGameModeBase : public AGameModeBase
 
 	virtual void BeginPlay() override;
 
+	void MakeExampleMoves();
+
 public:
 	GameBoard* gameBoard;
 };
