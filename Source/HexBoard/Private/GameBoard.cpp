@@ -5,7 +5,7 @@
 
 GameBoard::GameBoard()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Hello World from GameBoard"));
+	
 }
 
 void GameBoard::Init()
@@ -39,7 +39,7 @@ void GameBoard::Attack(Territory* attackingTerritory, Territory* defendingTerrit
 
 void GameBoard::PrintBoardData()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Number of territories: %i"), Territories.Num());
+	UE_LOG(LogTemp, Warning, TEXT("Territories:"));
 
 	for (auto& Territory : Territories)
 	{
